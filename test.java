@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class test{
+public class test {
     static void myProcess(String s){
         String er = "[ '.,?!]+";
         String[] r = s.split(er);
@@ -13,10 +13,10 @@ public class test{
     }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        String s = scan.nextLine();
+        String str = scan.nextLine();
         // Write your code here.
         try{
-            myProcess(s);
+            myProcess(str);
         }
         catch(Exception e)
         {
