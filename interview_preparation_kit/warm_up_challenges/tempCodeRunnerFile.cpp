@@ -1,0 +1,1 @@
+        cout<<one_step<<" ";
