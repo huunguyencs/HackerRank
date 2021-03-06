@@ -18,5 +18,18 @@ struct Node {
 bool has_cycle(Node* head) {
     // Complete this function
     // Do not write the main method
-
+    if (head == nullptr)
+        return false;
+    Node *fast = head->next;
+    Node *slow = head;
+    while (slow)
+    {
+        if (fast == nullptr || fast->next == nullptr)
+            return false;
+        if (fast == slow)
+            return true;
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    return false;
 }
