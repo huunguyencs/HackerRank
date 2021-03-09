@@ -97,18 +97,16 @@ void decode_huff(node * root, string s) {
     int i = 0, len = s.length();
     while(i < len){
         node* curr = root;
-        while(i < len && curr){
-            curr = curr->right;
-            cout<<curr->data<< " ";
-            // char tmp = s[i];
-            // if(tmp == '1') curr = curr->right;
-            // else curr = curr->left;
-            // if(!curr->data){
-            //     output += curr->data;
-            //     break;
-            // }
+        char out;
+        while(i <= len && curr){
+            char tmp = s[i];
+            out = curr->data;
+            if(tmp == '1') curr = curr->right;
+            else if(tmp == '0') curr = curr->left;
             i++;
         }
+        if(!curr) i--;
+        output+= out;
     }
     cout<<output;
 }
