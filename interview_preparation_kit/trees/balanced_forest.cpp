@@ -4,11 +4,8 @@ using namespace std;
 
 vector<string> split_string(string);
 
-
-
 // Complete the balancedForest function below.
 int balancedForest(vector<int> c, vector<vector<int>> edges) {
-
 
 }
 
