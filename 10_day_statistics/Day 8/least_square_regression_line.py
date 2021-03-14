@@ -12,11 +12,16 @@ def cov(X, Y):
     mean_Y = avg(Y)
     return sum([(x - mean_X)*(y - mean_Y) for x, y in zip(X, Y)])
 
-
-n = int(input())
-
-X = list(map(float, input().split()))
-Y = list(map(float, input().split()))
+X = [ 95, 85, 80, 70, 60]
+Y = [ 85, 95, 70, 65, 70]
+n = 5
 
 p = cov(X, Y)/(n*std(X)*std(Y))
-print(round(p, 3))
+
+b = p*std(Y)/std(X)
+
+a = avg(Y) - b * avg(X)
+
+y_80 = a + b*80
+
+print(round(y_80, 3))
