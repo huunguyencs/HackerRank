@@ -6,13 +6,31 @@ vector<string> split_string(string);
 
 // Complete the activityNotifications function below.
 int activityNotifications(vector<int> expenditure, int d) {
-
-
+    int notice = 0;
+    int i = 0;
+    while (i < expenditure.size() - d)
+    {
+        float medium;
+        sort(expenditure.begin() + i, expenditure.begin() + i + d);
+        if (d % 2 == 0)
+        {
+            medium = expenditure[(int)(2 * i + d - 1) / 2] + expenditure[(int)(2 * i + d - 1) / 2 + 1];
+            medium /= 2;
+        }
+        else
+        {
+            medium = expenditure[(int)(2 * i + d - 1) / 2];
+        }
+        if (medium * 2 <= expenditure[d + i])
+            notice++;
+        i++;
+    }
+    return notice;    
 }
 
 int main()
 {
-    ofstream fout(getenv("OUTPUT_PATH"));
+    // ofstream fout(getenv("OUTPUT_PATH"));
 
     string nd_temp;
     getline(cin, nd_temp);
@@ -38,9 +56,9 @@ int main()
 
     int result = activityNotifications(expenditure, d);
 
-    fout << result << "\n";
-
-    fout.close();
+    // fout << result << "\n";
+    cout << result << "\n";
+    // fout.close();
 
     return 0;
 }
