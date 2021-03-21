@@ -1,5 +1,7 @@
 // Link: https://www.hackerrank.com/challenges/permutations-of-strings/problem
 
+// Reference: https://en.wikipedia.org/wiki/Permutation#Generation_in_lexicographic_order
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
