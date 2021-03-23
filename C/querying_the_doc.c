@@ -8,19 +8,65 @@
 #define MAX_PARAGRAPHS 5
 
 char* kth_word_in_mth_sentence_of_nth_paragraph(char**** document, int k, int m, int n) {
-
+    return document[n-1][m-1][k-1];
 }
 
 char** kth_sentence_in_mth_paragraph(char**** document, int k, int m) { 
-
+    return document[m-1][k-1];
 }
 
 char*** kth_paragraph(char**** document, int k) {
+    return document[k-1];
+}
 
+char** split(char* text, char d){
+    assert(text != NULL);
+    char** res = malloc(sizeof(char*));
+    int size = 1;
+
+    char* tmp = strtok(text, &d);
+    *res = tmp;
+
+    while(tmp != NULL){
+        size++;
+        res = realloc(res, size*sizeof(char*));
+        tmp = strtok(NULL, &d);
+        res[size-1] = tmp;
+    }
+
+    return res;
 }
 
 char**** get_document(char* text) {
+    assert(text != NULL);
 
+    char** para = split(text, '\n');
+    int number_para = 0;
+    while(para[number_para] != NULL)
+        number_para++;
+    
+    char**** doc = malloc((number_para + 1)*sizeof(char***));
+
+    doc[number_para] = NULL;
+
+    int i = 0;
+    while(para[i] != NULL){
+        char** sentences = split(para[i], '.');
+        int number_sen = 0;
+        while(sentences[number_sen] != NULL){
+            number_sen++;
+        }
+
+        doc[i] = malloc((number_sen + 1)*sizeof(char**));
+        doc[i][number_sen] = NULL;
+        int j = 0;
+        while(sentences[j] != NULL) {
+            doc[i][j] = split(sentences[j], ' ');
+            j++;
+        }
+        i++;
+    }
+    return doc;
 }
 
 
